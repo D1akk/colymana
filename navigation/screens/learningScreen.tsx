@@ -1,17 +1,17 @@
 import * as React from 'react';
-import {View, Text, Animated, ScrollView} from "react-native";
+import {View, Text, Animated, ScrollView, StyleSheet, TouchableOpacity, Image} from "react-native";
+import {SvgUri} from "react-native-svg";
 
 
-export default function LearningScreen({navigation}) {
+const LearningScreen = () => {
     const scrollY = new Animated.Value(0);
-
     return (
         <ScrollView
-            style={{ flex: 1 }}
+            style={{flex: 1}}
             scrollEventThrottle={16}
             onScroll={Animated.event(
-                [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-                { useNativeDriver: false }
+                [{nativeEvent: {contentOffset: {y: scrollY}}}],
+                {useNativeDriver: false}
             )}
         >
             <Animated.View
@@ -31,15 +31,34 @@ export default function LearningScreen({navigation}) {
                     ],
                 }}
             >
-                <Text style={{ color: 'white', fontSize: 24, width:210, }}>Привет, Никита!</Text>
-                <Text></Text>
+                <View style={styles.container}>
+                    <SvgUri
+                        height={10}
+                        uri={require('../../assets/images/backButton.svg')}/>
+                </View>
+                {/*<Text style={{ color: 'white', fontSize: 24, width:210, }}>Привет, Никита!</Text>*/}
+                {/*<Text></Text>*/}
             </Animated.View>
 
             {/* Контент страницы */}
-            <View style={{ padding: 20 }}>
+            <View style={{padding: 20}}>
                 {/* Ваш контент */}
 
             </View>
         </ScrollView>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        alignItems: "center",
+        padding: 10,
+    },
+    backButton: {
+        width: 50,
+        height: 50,
+        resizeMode: 'contain',
+    }
+})
+export default LearningScreen;
