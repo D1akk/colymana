@@ -1,9 +1,10 @@
 import * as React from 'react';
 import {View, Text, Animated, ScrollView, StyleSheet, TouchableOpacity, Image} from "react-native";
-import {SvgUri} from "react-native-svg";
+// import {BackButton} from "../../assets/images";
+import BackButton from "../../assets/images/BackButton.svg"
+import HeaderLogo from "../../assets/images/HeaderLogo.svg"
 
-
-const LearningScreen = () => {
+const LearningScreen = ({navigation}) => {
     const scrollY = new Animated.Value(0);
     return (
         <ScrollView
@@ -18,7 +19,7 @@ const LearningScreen = () => {
                 style={{
                     height: 184,
                     backgroundColor: 'hsla(204, 100%, 62%, 1)',
-                    // justifyContent: 'center',
+                    // justifyContent: 'space-between',
                     // alignItems: 'center',
                     transform: [
                         {
@@ -32,12 +33,20 @@ const LearningScreen = () => {
                 }}
             >
                 <View style={styles.container}>
-                    <SvgUri
-                        height={10}
-                        uri={require('../../assets/images/backButton.svg')}/>
+                    <View style={styles.back_button_container}>
+                        <BackButton style={styles.back_button}/>
+                    </View>
                 </View>
-                {/*<Text style={{ color: 'white', fontSize: 24, width:210, }}>Привет, Никита!</Text>*/}
-                {/*<Text></Text>*/}
+                <View style={styles.container}>
+                    <View>
+                        <Text style={{color: 'white', fontSize: 24, width: 210, fontWeight:"500"}}>Привет, Никита!</Text>
+                        <Text style={{color: 'white', fontSize: 13, fontWeight: "400", marginTop: 14, lineHeight:20}}>Начнешь сегодня {"\n"}обучение?</Text>
+                    </View>
+                    <View style={styles.header_logo}>
+                        {/*<Image source={require("../../assets/images/BackButton.svg")}></Image>*/}
+                        <HeaderLogo/>
+                    </View>
+                </View>
             </Animated.View>
 
             {/* Контент страницы */}
@@ -53,12 +62,20 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: "center",
-        padding: 10,
+        paddingRight: 20,
+        paddingLeft: 20,
     },
-    backButton: {
-        width: 50,
-        height: 50,
-        resizeMode: 'contain',
-    }
+    back_button_container: {
+        marginTop: 10,
+        marginLeft: 0,
+        width: 42,
+        height: 42,
+        // backgroundColor:"red",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    back_button: {}
+
+
 })
 export default LearningScreen;

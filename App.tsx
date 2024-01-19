@@ -120,12 +120,13 @@
 
 import * as React from "react";
 import MainContainer from "./navigation/mainContainer";
+import {SafeAreaView} from "react-native";
 
 
-function App(){
+function App(): JSX.Element{
     return(
         <MainContainer/>
-    );
+        );
 }
 
 export default App;
