@@ -17,7 +17,7 @@ const LearningScreen = ({navigation}) => {
         >
             <Animated.View
                 style={{
-                    height: 184,
+                    height: 200,
                     backgroundColor: 'hsla(204, 100%, 62%, 1)',
                     // justifyContent: 'space-between',
                     // alignItems: 'center',
@@ -33,18 +33,29 @@ const LearningScreen = ({navigation}) => {
                 }}
             >
                 <View style={styles.container}>
-                    <View style={styles.back_button_container}>
-                        <BackButton style={styles.back_button}/>
-                    </View>
-                </View>
-                <View style={styles.container}>
-                    <View>
-                        <Text style={{color: 'white', fontSize: 24, width: 210, fontWeight:"500"}}>Привет, Никита!</Text>
-                        <Text style={{color: 'white', fontSize: 13, fontWeight: "400", marginTop: 14, lineHeight:20}}>Начнешь сегодня {"\n"}обучение?</Text>
-                    </View>
-                    <View style={styles.header_logo}>
-                        {/*<Image source={require("../../assets/images/BackButton.svg")}></Image>*/}
-                        <HeaderLogo/>
+                    <View style={styles.header}>
+                        <View style={styles.header_left}>
+                            <View style={styles.back_button_container}>
+                                <BackButton style={styles.back_button}/>
+                            </View>
+                            <View>
+                                <Text style={{color: 'white', fontSize: 24, width: 210, fontWeight: "500"}}>Привет,
+                                    Никита!</Text>
+                                <Text style={{
+                                    color: 'white',
+                                    fontSize: 13,
+                                    fontWeight: "400",
+                                    marginTop: 14,
+                                    lineHeight: 20
+                                }}>Начнешь сегодня {"\n"}обучение?</Text>
+                            </View>
+                        </View>
+                        <View style={styles.header_right}>
+                            <View style={styles.header_logo}>
+                                <Image source={require("../../assets/images/Books.png")}
+                                       style={{height: 128, width: 128}}></Image>
+                            </View>
+                        </View>
                     </View>
                 </View>
             </Animated.View>
@@ -72,9 +83,12 @@ const styles = StyleSheet.create({
         height: 42,
         // backgroundColor:"red",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
     },
-    back_button: {}
+    header:{
+        flexDirection: "row",
+        justifyContent: "space-between",
+    }
 
 
 })
